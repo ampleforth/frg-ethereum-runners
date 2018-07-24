@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# usage: ./exec.sh [ganache|geth] [start|stop]
+# usage: ./exec.sh [start|stop] [ganache|geth]
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # ethereum runners
 source $DIR/base-runner.sh
 
-IMPL=$1
+IMPL=$2
 
-if [ "$2" == "start" ]; then
+if [ "$1" == "start" ]; then
   start-chain $IMPL
 fi
 
-if [ "$2" == "stop" ]; then
+if [ "$1" == "stop" ]; then
   stop-chain $IMPL
 fi

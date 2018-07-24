@@ -20,5 +20,5 @@ brew install ethereum
 
 ## Usage
 ```bash
-# usage: ./exec.sh [ganache|geth] [start|stop]
+./exec.sh [start|stop] [ganache|geth]
 ```
