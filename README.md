@@ -10,12 +10,7 @@ Plans to support:
 
 ## Install Ethereum implementations
 ```bash
-# Install ganache
-npm install -g ganache-cli
-
-# Install geth (https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Mac)
-brew tap ethereum/ethereum
-brew install ethereum
+./dep-install.sh
 ```
 
 ## Usage
