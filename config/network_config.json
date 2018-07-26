@@ -3,26 +3,38 @@
     "ref": "ganache-unit-test",
     "host": "127.0.0.1",
     "port": 8545,
-    "network_id": "*"
+    "network_id": "*",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "passcode": "fragments"
   },
   "ganacheDev": {
     "ref": "ganache-dev",
     "host": "127.0.0.1",
     "port": 7545,
-    "network_id": "*"
+    "network_id": "*",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "passcode": "fragments"
   },
   "gethUnitTest": {
     "ref": "geth-unit-test",
     "host": "127.0.0.1",
     "port": 8550,
     "wsPort": 8551,
-    "network_id": "9000"
+    "network_id": "9000",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "passcode": "fragments"
   },
   "gethDev": {
     "ref": "geth-dev",
     "host": "127.0.0.1",
     "port": 7550,
     "wsPort": 7551,
-    "network_id": "9001"
+    "network_id": "9001",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "passcode": "fragments"
   }
 }

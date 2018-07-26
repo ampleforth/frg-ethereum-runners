@@ -19,3 +19,6 @@ Plans to support:
 # network-ref => The network reference is the concatenation of the ethereum implementation and the local environment. (eg) [ganache + UnitTest] ~ local ganache chain in the UnitTest environment.
 # config/network_config.json lists the supported environments.
 ```
+
+## Test accounts
+Test accounts are generated as [HDWallets](https://github.com/trufflesuite/truffle-hdwallet-provider) with mnemonic "fragments" and are assigned 1M ETH each at genesis.

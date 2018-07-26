@@ -14,6 +14,7 @@ frg-geth(){
    --verbosity 2 \
    --rpcapi="db,eth,net,web3,personal,test" \
    --wsapi="db,eth,net,web3,personal,test" \
+   --etherbase "3b2b9efdae5291f3bb9c7e6508c7e67534511585" \
    "$@"
 }
 
