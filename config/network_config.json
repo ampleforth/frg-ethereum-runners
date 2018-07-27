@@ -6,7 +6,7 @@
     "network_id": "*",
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "passcode": "fragments"
+    "testOnlyHDWPasscode": "fragments"
   },
   "ganacheDev": {
     "ref": "ganache-dev",
@@ -15,7 +15,7 @@
     "network_id": "*",
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "passcode": "fragments"
+    "testOnlyHDWPasscode": "fragments"
   },
   "gethUnitTest": {
     "ref": "geth-unit-test",
@@ -25,7 +25,7 @@
     "network_id": "9000",
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "passcode": "fragments"
+    "testOnlyHDWPasscode": "fragments"
   },
   "gethDev": {
     "ref": "geth-dev",
@@ -35,6 +35,6 @@
     "network_id": "9001",
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "passcode": "fragments"
+    "testOnlyHDWPasscode": "fragments"
   }
 }
