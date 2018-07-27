@@ -21,4 +21,4 @@ Plans to support:
 ```
 
 ## Test accounts
-Test accounts are generated as [HDWallets](https://github.com/trufflesuite/truffle-hdwallet-provider) with mnemonic "fragments" and are assigned 1M ETH each at genesis.
+Test accounts (`./config/accounts.json`) are generated as [HDWallets](https://github.com/trufflesuite/truffle-hdwallet-provider) (Index 0-9) with mnemonic "fragments" and are assigned 1M ETH each at genesis.
