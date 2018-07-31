@@ -2,7 +2,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 GAS_PRICE=1000000000
 frg-geth(){
-  geth --networkid 1234 \
+  geth --networkid 9000 \
    --maxpeers 0 \
    --nodiscover \
    --gasprice $GAS_PRICE \
