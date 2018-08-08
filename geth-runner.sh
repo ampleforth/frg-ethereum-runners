@@ -25,22 +25,34 @@ run-geth(){
   echo "Running local geth network: $NETWORK_REF"
 
   CHAIN_DATA=$DIR/logs/chain_data_$NETWORK_REF
+  KEY_DIR=$DIR/config/keystore
   if [ $REFRESH == 1 ]; then
     rm -rf $CHAIN_DATA
     echo "Cleaning up: $CHAIN_DATA"
   fi
   echo "Saving blockchain data at: $CHAIN_DATA"
 
+  echo "Setting up wallets and private keys for testing"
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key1
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key2
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key3
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key4
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key5
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key6
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key7
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key8
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key9
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/password.txt $KEY_DIR/key10
+
   GENESIS_CONFIG=$DIR/config/genesis.json
   frg-geth --datadir $CHAIN_DATA \
-    --keystore $DIR/config/keystore \
     --identity $NETWORK_REF \
     init $GENESIS_CONFIG
-  echo "Using keystore: $DIR/config/keystore"
+  echo "Using keystore: $KEY_DIR"
   echo "Initialized local geth chain using: $GENESIS_CONFIG"
 
   frg-geth --datadir $CHAIN_DATA \
-     --keystore $DIR/config/keystore \
+     --unlock "0,1,2,3,4,5,6,7,8,9" --password $KEY_DIR/password.txt \
      --identity $NETWORK_REF \
      --port $((PORT-1)) \
      --rpcport $((PORT)) \

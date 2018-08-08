@@ -5,8 +5,7 @@
     "port": 8545,
     "network_id": "*",
     "gas": 7989556,
-    "gasPrice": 9000000000,
-    "testOnlyHDWPasscode": "fragments"
+    "gasPrice": 9000000000
   },
   "ganacheDev": {
     "ref": "ganache-dev",
@@ -14,8 +13,7 @@
     "port": 7545,
     "network_id": "*",
     "gas": 7989556,
-    "gasPrice": 9000000000,
-    "testOnlyHDWPasscode": "fragments"
+    "gasPrice": 9000000000
   },
   "gethUnitTest": {
     "ref": "geth-unit-test",
