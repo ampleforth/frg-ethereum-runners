@@ -21,5 +21,10 @@ Plans to support:
 # config/network_config.json lists the supported environments.
 ```
 
-## Test accounts
-Test accounts (`./config/accounts.json`) are generated as [HDWallets](https://github.com/trufflesuite/truffle-hdwallet-provider) (Index 0-9) with mnemonic "fragments" and are assigned 1M ETH each at genesis.
+## Test wallets
+[HDWallets](https://github.com/trufflesuite/truffle-hdwallet-provider) (Index 0-9) with mnemonic "fragments" and are assigned 1M ETH each at genesis.
+```bash
+# Run once and keys are committed (seed=fragments, n=10 hardcoded)
+# NOTE: Check-in the updated keys
+./gen_hd_wallets.js
+```
