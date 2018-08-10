@@ -26,9 +26,9 @@ run-ganache(){
     --account="0x$(cat $KEY_DIR/key8),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/key9),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/key10),1000000000000000000000000" \
-    -p $PORT > $DIR/logs/$NETWORK_REF.log &
+    -p $PORT > $DIR/$NETWORK_REF.log &
 
   echo "Started local ganache chain"
   echo "Network port: $PORT"
-  echo "Logging: $DIR/logs/$NETWORK_REF.log"
+  echo "Logging: $DIR/$NETWORK_REF.log"
 }

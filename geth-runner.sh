@@ -24,7 +24,7 @@ run-geth(){
   PORT=$3
   echo "Running local geth network: $NETWORK_REF"
 
-  CHAIN_DATA=$DIR/logs/chain_data_$NETWORK_REF
+  CHAIN_DATA=$DIR/chain_data_$NETWORK_REF
   KEY_DIR=$DIR/config/keystore
   if [ $REFRESH == 1 ]; then
     rm -rf $CHAIN_DATA
@@ -57,10 +57,10 @@ run-geth(){
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \
-     --mine 1 console 2> $DIR/logs/$NETWORK_REF.log &
+     --mine 1 console 2> $DIR/$NETWORK_REF.log &
   echo "Started local geth chain"
   echo "Network port: $((PORT-1))"
   echo "RPC HTTP port: $((PORT))"
   echo "RPC WS port: $((PORT+1))"
-  echo "Logging: $DIR/logs/$NETWORK_REF.log &"
+  echo "Logging: $DIR/$NETWORK_REF.log &"
 }
