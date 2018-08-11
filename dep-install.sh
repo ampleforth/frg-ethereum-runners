@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 install-geth-linux(){
   sudo add-apt-repository -y ppa:ethereum/ethereum
   sudo apt-get update -q
@@ -18,7 +20,7 @@ install-geth(){
   fi
 }
 
-bash ./lite-dep-install.sh
+bash $DIR/lite-dep-install.sh
 
 echo "------Installing zos"
 npm install -g zos@1.1.0
