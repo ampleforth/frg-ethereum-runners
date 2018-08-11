@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-bash $DIR/../dep-install.sh
+if [ "$1" == "lite" ]; then
+  bash $DIR/../lite-dep-install.sh
+else
+  bash $DIR/../dep-install.sh
+fi
