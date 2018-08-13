@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-# ethereum runners
-source $DIR/../base-runner.sh
+source ../base-runner.sh
 
 NETWORK_REF=$1
 
