@@ -2,9 +2,15 @@
   "name": "frg-ethereum-runners",
   "version": "1.0.0",
   "description": "A collection of bash scripts to manage local instances of the Ethereum blockchain.",
-  "scripts": {},
-  "author": "eng@fragments.org",
   "license": "ISC",
+  "author": "eng@fragments.org",
+  "bin": {
+    "get-network-config": "./bin/get-network-config",
+    "setup-local-chains": "./bin/setup-local-chains",
+    "start-chain": "./bin/start-chain",
+    "stop-chain": "./bin/stop-chain"
+  },
+  "scripts": {},
   "dependencies": {
     "app-root-path": "^2.1.0",
     "bip39": "^2.5.0",
