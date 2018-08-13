@@ -10,8 +10,8 @@ Plans to support:
 
 ## Install Ethereum implementations
 ```bash
-./dep-install.sh # Install dependencies locally
-./ci-dep-install.sh #Install dependencies on TRAVIS
+./dep-install.sh # Install all dependencies
+./lite-dep-install.sh #Install dependencies for only unit testing
 ```
 
 ## Usage
