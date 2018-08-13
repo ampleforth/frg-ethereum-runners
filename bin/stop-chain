@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-source ../base-runner.sh
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+process-pid(){
+  lsof -t -i:$1
+}
 
-NETWORK_REF=$1
+stop-chain(){
+  read NETWORK_REF PORT CHAIN_RNR < <($DIR/get-network-config $1)
+  CHAIN_PID=$(process-pid $PORT)
+  if [[ $CHAIN_PID ]]; then
+    kill -9 $CHAIN_PID
+    echo "Shutdown blockchain on $PORT"
+  fi
+}
 
-stop-chain $NETWORK_REF
+stop-chain $1

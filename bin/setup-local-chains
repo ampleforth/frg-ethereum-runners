@@ -1,6 +1,42 @@
 #!/usr/bin/env bash
+echo "------Setting up environment"
+
+install-geth-linux(){
+  sudo add-apt-repository -y ppa:ethereum/ethereum
+  sudo apt-get update -q
+  sudo apt-get install ethereum
+}
+
+install-geth-osx(){
+  brew tap ethereum/ethereum
+  brew install ethereum
+}
+
+install-geth(){
+  if [[ "$OSTYPE" = "linux-gnu" ]]; then
+    install-geth-linux
+  elif [[ "$OSTYPE" = "darwin"* ]]; then
+    install-geth-osx
+  fi
+}
+
+essential-packages(){
+  echo "------Installing npx"
+  npm install -g npx
+  echo "------Installing ganache"
+  npm install -g ganache-cli@6.1.0
+}
+
+additional-packages(){
+  echo "------Installing zos"
+  npm install -g zos@1.1.0
+  echo "------Installing geth"
+  install-geth
+}
+
 if [ "$1" == "lite" ]; then
-  bash ../lite-dep-install.sh
+  essential-packages
 else
-  bash ../dep-install.sh
+  essential-packages
+  additional-packages
 fi
