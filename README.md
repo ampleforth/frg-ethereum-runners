@@ -10,15 +10,16 @@ Plans to support:
 
 ## Install Ethereum implementations
 ```bash
-./dep-install.sh # Install all dependencies
-./lite-dep-install.sh #Install dependencies for only unit testing
+./.bin/setup-local-chains #Install all dependencies
+./.bin/setup-local-chains 'lite' #Install dependencies for only unit testing
 ```
 
 ## Usage
 ```bash
-./exec.sh [start|stop] [network-ref]
+./.bin/start-chain [network-ref]
+./.bin/stop-chain [network-ref]
 # network-ref => The network reference is the concatenation of the ethereum implementation and the local environment. (eg) [ganache + UnitTest] ~ local ganache chain in the UnitTest environment.
-# config/network_config.json lists the supported environments.
+# ./config/network_config.json lists the supported environments.
 ```
 
 ## Test wallets
