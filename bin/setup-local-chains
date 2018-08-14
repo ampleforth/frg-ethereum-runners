@@ -21,8 +21,6 @@ install-geth(){
 }
 
 essential-packages(){
-  echo "------Installing npx"
-  npm install -g npx
   echo "------Installing ganache"
   npm install -g ganache-cli@6.1.0
 }
