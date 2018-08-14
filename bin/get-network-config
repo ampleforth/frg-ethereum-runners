@@ -10,9 +10,9 @@ get-network-config(){
     CHAIN_RNR=1
   fi
 
-  if [ "$NETWORK_REF" == "ganacheDev" ]; then
+  if [ "$NETWORK_REF" == "ganacheIntegration" ]; then
     PORT=7545
-  elif [ "$NETWORK_REF" == "gethDev" ]; then
+  elif [ "$NETWORK_REF" == "gethIntegration" ]; then
     PORT=7550
   elif [ "$NETWORK_REF" == "ganacheUnitTest" ]; then
     PORT=8545

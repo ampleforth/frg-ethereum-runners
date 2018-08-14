@@ -7,8 +7,8 @@
     "gas": 7989556,
     "gasPrice": 9000000000
   },
-  "ganacheDev": {
-    "ref": "ganache-dev",
+  "ganacheIntegration": {
+    "ref": "ganache-integration",
     "host": "127.0.0.1",
     "port": 7545,
     "network_id": "*",
@@ -25,8 +25,8 @@
     "gasPrice": 9000000000,
     "testOnlyHDWPasscode": "fragments"
   },
-  "gethDev": {
-    "ref": "geth-dev",
+  "gethIntegration": {
+    "ref": "geth-integration",
     "host": "127.0.0.1",
     "port": 7550,
     "wsPort": 7551,
