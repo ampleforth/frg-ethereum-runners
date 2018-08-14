@@ -5,6 +5,7 @@
   "license": "ISC",
   "author": "eng@fragments.org",
   "bin": {
+    "frg-local-genesis": "./bin/frg-local-genesis",
     "frg-local-key1": "./bin/frg-local-key1",
     "frg-local-key10": "./bin/frg-local-key10",
     "frg-local-key2": "./bin/frg-local-key2",
