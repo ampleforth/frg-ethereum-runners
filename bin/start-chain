@@ -64,7 +64,7 @@ run-geth(){
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \
-     --mine 1 console 2> $DIR/$NETWORK_REF.log &
+     --mine 1 console &> $DIR/$NETWORK_REF.log &
   echo "Started local geth chain"
   echo "Network port: $((PORT-1))"
   echo "RPC HTTP port: $((PORT))"
@@ -93,7 +93,7 @@ run-ganache(){
     --account="0x$(cat $KEY_DIR/frg-local-key8),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/frg-local-key9),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/frg-local-key10),1000000000000000000000000" \
-    -p $PORT > $DIR/$NETWORK_REF.log &
+    -p $PORT &> $DIR/$NETWORK_REF.log &
 
   echo "Started local ganache chain"
   echo "Network port: $PORT"
