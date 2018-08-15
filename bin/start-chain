@@ -70,11 +70,13 @@ run-geth(){
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \
      --mine 1 console &> $DIR/$NETWORK_REF.log &
+
   echo "Started local geth chain"
   echo "Network port: $((PORT-1))"
   echo "RPC HTTP port: $((PORT))"
   echo "RPC WS port: $((PORT+1))"
   echo "Logging: $DIR/$NETWORK_REF.log &"
+  cat $DIR/$NETWORK_REF.log
 }
 
 run-ganache(){
