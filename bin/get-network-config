@@ -8,6 +8,8 @@ get-network-config(){
     CHAIN_RNR=0
   elif [[ $NETWORK_REF = "geth"* ]]; then
     CHAIN_RNR=1
+  elif [[ $NETWORK_REF = "testrpc"* ]]; then
+    CHAIN_RNR=2
   fi
 
   if [ "$NETWORK_REF" == "ganacheIntegration" ]; then
@@ -18,6 +20,8 @@ get-network-config(){
     PORT=8545
   elif [ "$NETWORK_REF" == "gethUnitTest" ]; then
     PORT=8550
+  elif [ "$NETWORK_REF" == "testrpcCoverage" ]; then
+    PORT=6545
   fi
 
   echo "$NETWORK_REF" "$PORT" "$CHAIN_RNR"

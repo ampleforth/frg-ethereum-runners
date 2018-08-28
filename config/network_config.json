@@ -34,5 +34,14 @@
     "gas": 7989556,
     "gasPrice": 9000000000,
     "testOnlyHDWPasscode": "fragments"
+  },
+  "testrpcCoverage": {
+    "ref": "testrpc-coverage",
+    "host": "127.0.0.1",
+    "port": 6545,
+    "wsPort": 6546,
+    "network_id": "*",
+    "gas": "0xfffffffffff",
+    "gasPrice": "0x01"
   }
 }

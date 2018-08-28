@@ -9,7 +9,7 @@ stop-chain(){
   CHAIN_PID=$(process-pid $PORT)
   if [[ $CHAIN_PID ]]; then
     kill -9 $CHAIN_PID
-    echo "Shutdown blockchain on $PORT"
+    echo "Shutdown blockchain($NETWORK_REF) on $PORT"
   fi
 }
 

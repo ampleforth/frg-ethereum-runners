@@ -23,11 +23,15 @@ install-geth(){
 essential-packages(){
   echo "------Installing ganache"
   npm install -g ganache-cli@6.1.0
+
+  echo "------Installing testrpc-sc"
+  npm install -g ethereumjs-testrpc-sc
 }
 
 additional-packages(){
   echo "------Installing zos"
   npm install -g zos@1.1.0
+
   echo "------Installing geth"
   install-geth
 }
