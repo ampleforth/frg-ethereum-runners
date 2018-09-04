@@ -69,7 +69,9 @@ run-geth(){
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \
-     --mine &> $DIR/$NETWORK_REF.log &
+     --mine \
+     --minerthreads 2 \
+     --verbosity 3 &> $DIR/$NETWORK_REF.log &
 
   echo "Started local geth chain"
   echo "Network port: $((PORT-1))"
