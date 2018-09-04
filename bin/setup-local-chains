@@ -29,9 +29,6 @@ essential-packages(){
 }
 
 additional-packages(){
-  echo "------Installing zos"
-  npm install -g zos@1.1.0
-
   echo "------Installing geth"
   install-geth
 }
