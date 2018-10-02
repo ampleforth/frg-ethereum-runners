@@ -1,0 +1,47 @@
+{
+  "ganacheUnitTest": {
+    "ref": "ganache-unit-test",
+    "host": "127.0.0.1",
+    "port": 8545,
+    "network_id": "*",
+    "gas": 7989556,
+    "gasPrice": 9000000000
+  },
+  "ganacheIntegration": {
+    "ref": "ganache-integration",
+    "host": "127.0.0.1",
+    "port": 7545,
+    "network_id": "*",
+    "gas": 7989556,
+    "gasPrice": 9000000000
+  },
+  "gethUnitTest": {
+    "ref": "geth-unit-test",
+    "host": "127.0.0.1",
+    "port": 8550,
+    "wsPort": 8551,
+    "network_id": "9000",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "testOnlyHDWPasscode": "fragments"
+  },
+  "gethIntegration": {
+    "ref": "geth-integration",
+    "host": "127.0.0.1",
+    "port": 7550,
+    "wsPort": 7551,
+    "network_id": "9000",
+    "gas": 7989556,
+    "gasPrice": 9000000000,
+    "testOnlyHDWPasscode": "fragments"
+  },
+  "testrpcCoverage": {
+    "ref": "testrpc-coverage",
+    "host": "127.0.0.1",
+    "port": 6545,
+    "wsPort": 6546,
+    "network_id": "*",
+    "gas": "0xfffffffffff",
+    "gasPrice": "0x01"
+  }
+}

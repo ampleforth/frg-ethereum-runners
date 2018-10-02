@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+get-network-config(){
+  NETWORK_REF=$1
+  PORT=0
+  CHAIN_RNR=99
+
+  if [[ $NETWORK_REF = "ganache"* ]]; then
+    CHAIN_RNR=0
+  elif [[ $NETWORK_REF = "geth"* ]]; then
+    CHAIN_RNR=1
+  elif [[ $NETWORK_REF = "testrpc"* ]]; then
+    CHAIN_RNR=2
+  fi
+
+  if [ "$NETWORK_REF" == "ganacheIntegration" ]; then
+    PORT=7545
+  elif [ "$NETWORK_REF" == "gethIntegration" ]; then
+    PORT=7550
+  elif [ "$NETWORK_REF" == "ganacheUnitTest" ]; then
+    PORT=8545
+  elif [ "$NETWORK_REF" == "gethUnitTest" ]; then
+    PORT=8550
+  elif [ "$NETWORK_REF" == "testrpcCoverage" ]; then
+    PORT=6545
+  fi
+
+  echo "$NETWORK_REF" "$PORT" "$CHAIN_RNR"
+}
+
+get-network-config $1

@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+GAS_PRICE=1000000000
+MNEMONIC='fragments.org'
+BLOCK_GAS_LIMIT=7989556
+KEY_DIR=$DIR
+
+process-pid(){
+  lsof -t -i:$1
+}
+
+frg-geth(){
+  geth --networkid 9000 \
+   --maxpeers 0 \
+   --nodiscover \
+   --gasprice $GAS_PRICE \
+   --rpc \
+   --rpccorsdomain "*" \
+   --ws \
+   --wsorigins "*" \
+   --nat "any"  \
+   --verbosity 3 \
+   --rpcapi="db,eth,net,web3,personal,test" \
+   --wsapi="db,eth,net,web3,personal,test" \
+   --etherbase "3b2b9efdae5291f3bb9c7e6508c7e67534511585" \
+   "$@"
+}
+
+run-geth(){
+  REFRESH=$1
+  NETWORK_REF=$2
+  PORT=$3
+  echo "Running local geth network: $NETWORK_REF"
+
+  CHAIN_DATA=$DIR/chain_data_$NETWORK_REF
+  if [ $REFRESH == 1 ]; then
+    rm -rf $CHAIN_DATA
+    echo "Cleaning up: $CHAIN_DATA"
+  fi
+  echo "Saving blockchain data at: $CHAIN_DATA"
+
+  echo "Setting up wallets and private keys for testing"
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key1
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key2
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key3
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key4
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key5
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key6
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key7
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key8
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key9
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key10
+
+  GENESIS_CONFIG=$DIR/frg-local-genesis
+  frg-geth --datadir $CHAIN_DATA \
+    --identity $NETWORK_REF \
+    init $GENESIS_CONFIG
+  echo "Using keystore: $KEY_DIR"
+  echo "Initialized local geth chain using: $GENESIS_CONFIG"
+
+  WALLETS="$(cat $KEY_DIR/frg-local-wallet1),$(cat $KEY_DIR/frg-local-wallet2)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet3),$(cat $KEY_DIR/frg-local-wallet4)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet5),$(cat $KEY_DIR/frg-local-wallet6)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet7),$(cat $KEY_DIR/frg-local-wallet8)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet9),$(cat $KEY_DIR/frg-local-wallet10)"
+  frg-geth --datadir $CHAIN_DATA \
+     --unlock "$WALLETS" --password $KEY_DIR/frg-local-password \
+     --identity $NETWORK_REF \
+     --port $((PORT-1)) \
+     --rpcport $((PORT)) \
+     --wsport $((PORT+1)) \
+     --mine \
+     --minerthreads 2 \
+     --verbosity 3 &> $DIR/$NETWORK_REF.log &
+
+  echo "Started local geth chain"
+  echo "Network port: $((PORT-1))"
+  echo "RPC HTTP port: $((PORT))"
+  echo "RPC WS port: $((PORT+1))"
+  echo "Logging: $DIR/$NETWORK_REF.log &"
+}
+
+run-ganache(){
+  REFRESH=$1
+  NETWORK_REF=$2
+  PORT=$3
+  echo "Running local ganache network: $NETWORK_REF"
+
+  ganache-cli \
+    -g $GAS_PRICE \
+    -l $BLOCK_GAS_LIMIT \
+    -a 10 \
+    -m $MNEMONIC \
+    --account="0x$(cat $KEY_DIR/frg-local-key1),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key2),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key3),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key4),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key5),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key6),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key7),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key8),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key9),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key10),1000000000000000000000000" \
+    -p $PORT &> $DIR/$NETWORK_REF.log &
+
+  echo "Started local ganache chain"
+  echo "Network port: $PORT"
+  echo "Logging: $DIR/$NETWORK_REF.log"
+}
+
+run-testrpc-sc(){
+  REFRESH=$1
+  NETWORK_REF=$2
+  PORT=$3
+  echo "Running local testrpc-sc network: $NETWORK_REF"
+
+  testrpc-sc \
+    -g $GAS_PRICE \
+    -l $BLOCK_GAS_LIMIT \
+    -a 10 \
+    -m $MNEMONIC \
+    --account="0x$(cat $KEY_DIR/frg-local-key1),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key2),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key3),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key4),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key5),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key6),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key7),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key8),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key9),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key10),1000000000000000000000000" \
+    -p $PORT &> $DIR/$NETWORK_REF.log &
+
+  echo "Started local testrpc-sc chain"
+  echo "Network port: $PORT"
+  echo "Logging: $DIR/$NETWORK_REF.log"
+}
+
+start-appropriate-chain(){
+  REFRESH=1
+  read NETWORK_REF PORT CHAIN_RNR < <($DIR/get-network-config $1)
+  if [ $CHAIN_RNR == 0 ]; then
+    run-ganache $REFRESH $NETWORK_REF $PORT
+  elif [ $CHAIN_RNR == 1 ]; then
+    run-geth $REFRESH $NETWORK_REF $PORT
+  elif [ $CHAIN_RNR == 2 ]; then
+    run-testrpc-sc $REFRESH $NETWORK_REF $PORT
+  elif [ $CHAIN_RNR == 99 ]; then
+    echo "Invalid ethereum environment"
+    exit -1
+  fi
+}
+
+start-chain(){
+  read NETWORK_REF PORT CHAIN_RNR < <($DIR/get-network-config $1)
+  if [ $(process-pid $PORT) ]; then
+    echo "Using blockchain running on $PORT"
+  else
+    start-appropriate-chain $NETWORK_REF
+    echo "Started blockchain on $PORT"
+  fi
+}
+
+start-chain $1

@@ -1,0 +1,42 @@
+{
+  "name": "frg-ethereum-runners",
+  "version": "1.0.0",
+  "description": "A collection of bash scripts to manage local instances of the Ethereum blockchain.",
+  "license": "ISC",
+  "author": "eng@fragments.org",
+  "bin": {
+    "frg-local-genesis": "./bin/frg-local-genesis",
+    "frg-local-key1": "./bin/frg-local-key1",
+    "frg-local-key10": "./bin/frg-local-key10",
+    "frg-local-key2": "./bin/frg-local-key2",
+    "frg-local-key3": "./bin/frg-local-key3",
+    "frg-local-key4": "./bin/frg-local-key4",
+    "frg-local-key5": "./bin/frg-local-key5",
+    "frg-local-key6": "./bin/frg-local-key6",
+    "frg-local-key7": "./bin/frg-local-key7",
+    "frg-local-key8": "./bin/frg-local-key8",
+    "frg-local-key9": "./bin/frg-local-key9",
+    "frg-local-password": "./bin/frg-local-password",
+    "frg-local-wallet1": "./bin/frg-local-wallet1",
+    "frg-local-wallet10": "./bin/frg-local-wallet10",
+    "frg-local-wallet2": "./bin/frg-local-wallet2",
+    "frg-local-wallet3": "./bin/frg-local-wallet3",
+    "frg-local-wallet4": "./bin/frg-local-wallet4",
+    "frg-local-wallet5": "./bin/frg-local-wallet5",
+    "frg-local-wallet6": "./bin/frg-local-wallet6",
+    "frg-local-wallet7": "./bin/frg-local-wallet7",
+    "frg-local-wallet8": "./bin/frg-local-wallet8",
+    "frg-local-wallet9": "./bin/frg-local-wallet9",
+    "get-network-config": "./bin/get-network-config",
+    "setup-local-chains": "./bin/setup-local-chains",
+    "start-chain": "./bin/start-chain",
+    "stop-chain": "./bin/stop-chain",
+    "frg-coverage": "./bin/frg-coverage"
+  },
+  "scripts": {},
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "bip39": "^2.5.0",
+    "ethereumjs-wallet": "^0.6.2"
+  }
+}
