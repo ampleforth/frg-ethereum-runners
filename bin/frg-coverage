@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+PROJECT_DIR=$DIR/../
+
+# Exit script as soon as a command fails.
+set -o errexit
+
+process-pid(){
+  lsof -t -i:$1
+}
+
+echo "------Delete existing coverage data"
+rm -rf coverage
+
+echo "------Start blockchain(s)"
+PORT=6545
+if [ $(process-pid $PORT) ]
+then
+  REFRESH=0
+  echo "Using chain on: $PORT"
+else
+  REFRESH=1
+  echo "Running local testrpc-sc"
+  testrpc-sc \
+    -l 0xfffffffffff \
+    -g 0x01 \
+    --account="0x$(cat $DIR/frg-local-key1),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key2),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key3),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key4),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key5),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key6),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key7),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key8),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key9),1000000000000000000000000" \
+    --account="0x$(cat $DIR/frg-local-key10),1000000000000000000000000"\
+    -u "0,1,2,3,4,5,6,7,8,9" \
+    -h "127.0.0.1" \
+    -p $PORT &> $DIR/testrpcCoverage.log &
+  echo "Started local testrpc-sc chain"
+  echo "Network port: $PORT"
+  echo "Logging: $DIR/testrpcCoverage.log"
+fi
+cleanup(){
+  if [ "$REFRESH" == "1" ]
+  then
+    CHAIN_PID=$(process-pid $PORT)
+    kill -9 $CHAIN_PID
+  fi
+}
+trap cleanup EXIT
+
+SOLIDITY_COVERAGE=true npx solidity-coverage

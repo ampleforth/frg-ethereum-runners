@@ -2,8 +2,8 @@
 A collection of bash scripts to manage local instances of the Ethereum blockchain.
 
 Currently supports:
-* Ganache-CLI (ganache)
-* Go Ethereum (geth)
+* Ganache-CLI
+* Go Ethereum
 
 Plans to support:
 * Parity
