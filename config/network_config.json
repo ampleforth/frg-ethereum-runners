@@ -20,28 +20,34 @@
     "host": "127.0.0.1",
     "port": 8550,
     "wsPort": 8551,
-    "network_id": "9000",
+    "networkId": 85500,
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "testOnlyHDWPasscode": "fragments"
+    "testOnlyHDWPasscode": "fragments",
+    "chainId": 5,
+    "network_id": 5
   },
   "gethIntegration": {
     "ref": "geth-integration",
     "host": "127.0.0.1",
     "port": 7550,
     "wsPort": 7551,
-    "network_id": "9000",
+    "networkId": 75500,
     "gas": 7989556,
     "gasPrice": 9000000000,
-    "testOnlyHDWPasscode": "fragments"
+    "testOnlyHDWPasscode": "fragments",
+    "chainId": 5,
+    "network_id": 5
   },
   "testrpcCoverage": {
     "ref": "testrpc-coverage",
     "host": "127.0.0.1",
     "port": 6545,
     "wsPort": 6546,
-    "network_id": "*",
+    "networkId": "*",
     "gas": "0xfffffffffff",
-    "gasPrice": "0x01"
+    "gasPrice": "0x01",
+    "chainId": 5,
+    "network_id": 5 
   }
 }
