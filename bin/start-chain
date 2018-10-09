@@ -10,8 +10,7 @@ process-pid(){
 }
 
 frg-geth(){
-  geth --networkid 9000 \
-   --maxpeers 0 \
+  geth --maxpeers 0 \
    --nodiscover \
    --gasprice $GAS_PRICE \
    --rpc \
@@ -20,8 +19,8 @@ frg-geth(){
    --wsorigins "*" \
    --nat "any"  \
    --verbosity 3 \
-   --rpcapi="db,eth,net,web3,personal,test" \
-   --wsapi="db,eth,net,web3,personal,test" \
+   --rpcapi="db,eth,net,web3,personal,test,admin" \
+   --wsapi="db,eth,net,web3,personal,test,admin" \
    --etherbase "3b2b9efdae5291f3bb9c7e6508c7e67534511585" \
    "$@"
 }
@@ -66,6 +65,7 @@ run-geth(){
   frg-geth --datadir $CHAIN_DATA \
      --unlock "$WALLETS" --password $KEY_DIR/frg-local-password \
      --identity $NETWORK_REF \
+     --networkid 5 \
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \
