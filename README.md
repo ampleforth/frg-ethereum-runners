@@ -1,7 +1,5 @@
 # Ethereum Runners
 
-<img src="https://frgs3.s3.amazonaws.com/logo_centered_small.jpg" alt="Banner" width="100"/>
-
 This project is collection of bash scripts to run and manage local instances of the Ethereum blockchain,
 to deploy and test uFragments contracts. The local instances are instantiated with 10 hardcoded wallets with
 1M ETH each at genesis.
