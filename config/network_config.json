@@ -30,9 +30,9 @@
   "gethIntegration": {
     "ref": "geth-integration",
     "host": "127.0.0.1",
-    "port": 7550,
-    "wsPort": 7551,
-    "networkId": 75500,
+    "port": 7560,
+    "wsPort": 7561,
+    "networkId": 75600,
     "gas": 7989556,
     "gasPrice": 9000000000,
     "testOnlyHDWPasscode": "fragments",
