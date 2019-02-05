@@ -38,7 +38,14 @@ run-geth(){
   fi
   echo "Saving blockchain data at: $CHAIN_DATA"
 
+  GENESIS_CONFIG=$DIR/frg-local-genesis
+  frg-geth --datadir $CHAIN_DATA \
+    --identity $NETWORK_REF \
+    init $GENESIS_CONFIG
+  echo "Initialized local geth chain using: $GENESIS_CONFIG"
+
   echo "Setting up wallets and private keys for testing"
+  echo "Using keys from: $KEY_DIR"
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key1
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key2
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key3
@@ -50,13 +57,6 @@ run-geth(){
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key9
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key10
 
-  GENESIS_CONFIG=$DIR/frg-local-genesis
-  frg-geth --datadir $CHAIN_DATA \
-    --identity $NETWORK_REF \
-    init $GENESIS_CONFIG
-  echo "Using keystore: $KEY_DIR"
-  echo "Initialized local geth chain using: $GENESIS_CONFIG"
-
   WALLETS="$(cat $KEY_DIR/frg-local-wallet1),$(cat $KEY_DIR/frg-local-wallet2)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet3),$(cat $KEY_DIR/frg-local-wallet4)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet5),$(cat $KEY_DIR/frg-local-wallet6)"
@@ -65,6 +65,7 @@ run-geth(){
   frg-geth --datadir $CHAIN_DATA \
      --unlock "$WALLETS" --password $KEY_DIR/frg-local-password \
      --identity $NETWORK_REF \
+     --nousb \
      --networkid 5 \
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
@@ -127,6 +128,8 @@ start-chain(){
   else
     start-appropriate-chain $NETWORK_REF
     echo "Started blockchain on $PORT"
+    sleep 5 #wait for the geth process to start
+    echo "PID: $(process-pid $PORT)"
   fi
 }
 
