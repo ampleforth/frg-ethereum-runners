@@ -72,6 +72,7 @@ run-geth(){
      --wsport $((PORT+1)) \
      --mine \
      --minerthreads 2 \
+     --ipcdisable \
      --verbosity 3 &> $DIR/$NETWORK_REF.log &
 
   echo "Started local geth chain"
