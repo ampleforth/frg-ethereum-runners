@@ -2,9 +2,30 @@
 echo "------Setting up environment"
 
 install-geth-linux(){
-  sudo add-apt-repository -y ppa:ethereum/ethereum
-  sudo apt-get update -q
-  sudo apt-get install ethereum
+  CUR_PATH=$(pwd)
+  cd ~
+
+  sudo apt-get install -y build-essential
+  sudo apt-get update
+  sudo apt-get -y upgrade
+
+  wget https://dl.google.com/go/go1.11.linux-amd64.tar.gz
+  sudo tar -xvf go1.11.linux-amd64.tar.gz
+  sudo mv go /usr/local
+
+  export GOROOT=/usr/local/go
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+  go version
+  go env
+
+  git clone https://github.com/ethereum/go-ethereum
+  cd go-ethereum
+  git reset --HARD c942700427557e3ff6de3aaf6b916e2f056c1ec2 #v1.8.23
+
+  make all
+  cd $CUR_PATH
 }
 
 install-geth-osx(){
