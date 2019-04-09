@@ -56,12 +56,31 @@ run-geth(){
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key8
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key9
   frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key10
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key11
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key12
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key13
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key14
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key15
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key16
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key17
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key18
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key19
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key20
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key21
+  frg-geth account import --datadir $CHAIN_DATA --password $KEY_DIR/frg-local-password $KEY_DIR/frg-local-key22
 
   WALLETS="$(cat $KEY_DIR/frg-local-wallet1),$(cat $KEY_DIR/frg-local-wallet2)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet3),$(cat $KEY_DIR/frg-local-wallet4)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet5),$(cat $KEY_DIR/frg-local-wallet6)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet7),$(cat $KEY_DIR/frg-local-wallet8)"
   WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet9),$(cat $KEY_DIR/frg-local-wallet10)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet11),$(cat $KEY_DIR/frg-local-wallet12)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet13),$(cat $KEY_DIR/frg-local-wallet14)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet15),$(cat $KEY_DIR/frg-local-wallet16)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet17),$(cat $KEY_DIR/frg-local-wallet18)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet19),$(cat $KEY_DIR/frg-local-wallet20)"
+  WALLETS="$WALLETS,$(cat $KEY_DIR/frg-local-wallet21),$(cat $KEY_DIR/frg-local-wallet22)"
+
   frg-geth --datadir $CHAIN_DATA \
      --unlock "$WALLETS" --password $KEY_DIR/frg-local-password \
      --identity $NETWORK_REF \
@@ -103,6 +122,18 @@ run-ganache(){
     --account="0x$(cat $KEY_DIR/frg-local-key8),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/frg-local-key9),1000000000000000000000000" \
     --account="0x$(cat $KEY_DIR/frg-local-key10),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key11),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key12),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key13),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key14),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key15),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key16),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key17),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key18),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key19),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key20),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key21),1000000000000000000000000" \
+    --account="0x$(cat $KEY_DIR/frg-local-key22),1000000000000000000000000" \
     -p $PORT &> $DIR/$NETWORK_REF.log &
 
   echo "Started local ganache chain"
