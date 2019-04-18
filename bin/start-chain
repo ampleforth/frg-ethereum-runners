@@ -85,7 +85,7 @@ run-geth(){
      --unlock "$WALLETS" --password $KEY_DIR/frg-local-password \
      --identity $NETWORK_REF \
      --nousb \
-     --networkid 5 \
+     --networkid 99999999 \
      --port $((PORT-1)) \
      --rpcport $((PORT)) \
      --wsport $((PORT+1)) \

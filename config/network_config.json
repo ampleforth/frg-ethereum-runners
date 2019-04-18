@@ -24,8 +24,8 @@
     "gas": 7989556,
     "gasPrice": 9000000000,
     "testOnlyHDWPasscode": "fragments",
-    "chainId": 5,
-    "network_id": 5
+    "chainId": 99999999,
+    "network_id": 99999999
   },
   "gethIntegration": {
     "ref": "geth-integration",
@@ -36,8 +36,8 @@
     "gas": 7989556,
     "gasPrice": 9000000000,
     "testOnlyHDWPasscode": "fragments",
-    "chainId": 5,
-    "network_id": 5
+    "chainId": 99999999,
+    "network_id": 99999999
   },
   "testrpcCoverage": {
     "ref": "testrpc-coverage",
@@ -47,7 +47,7 @@
     "networkId": "*",
     "gas": "0xfffffffffff",
     "gasPrice": "0x01",
-    "chainId": 5,
-    "network_id": 5 
+    "chainId": 99999999,
+    "network_id": 99999999
   }
 }
