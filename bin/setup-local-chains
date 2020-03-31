@@ -22,9 +22,11 @@ install-geth(){
 
 essential-packages(){
   echo "------Installing ganache"
+  npm uninstall -g ganache-cli
   npm install -g ganache-cli@6.5.1
 
   echo "------Installing testrpc-sc"
+  npm uninstall -g ethereumjs-testrpc-sc
   npm install -g ethereumjs-testrpc-sc
 }
 
